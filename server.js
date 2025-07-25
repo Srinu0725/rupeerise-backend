@@ -1,6 +1,6 @@
 import express from "express";
 const app = express();
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import cors from "cors";
 import jwt from "jsonwebtoken";
@@ -161,46 +161,6 @@ const TransactionSchema = new mongoose.Schema({
 });
 const Transaction = mongoose.model("Transaction", TransactionSchema);
 
-
-
-
-// app.post("/register", async (req, res) => {
-//   const { name, email, password } = req.body;
-//   try {
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-//     const newUser = new User({
-//       name: req.body.name,
-//       email: req.body.email,
-//       password: hashedPassword,
-//     });
-
-//     await newUser.save();
-
-//     res.status(201).json({ message: "User registered successfully" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-
-
-
-
-
-// app.post("/register", async (req, res) => {
-//   try {
-//     const { name, email, password } = req.body;
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPassword = await bcrypt.hash(password, salt);
-//     const newUser = new User({ name, email, password: hashedPassword });
-//     await newUser.save();
-//     res.status(201).json({ message: "User registered successfully" });
-//     console.log("Registering email:", req.body.email);
-//   } catch (err) {
-//     console.error("Error in /register:", err);
-//     res.status(500).json({ error: err.message });
-//   }
-// });
 
 
 
