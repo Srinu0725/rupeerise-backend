@@ -655,6 +655,11 @@ app.put("/api/profile/:userId/password", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("RupeeRise Backend is running 🚀");
+});
+
+
 app.listen(port, () => {
   console.log(`server started at ${port}`);
 });
