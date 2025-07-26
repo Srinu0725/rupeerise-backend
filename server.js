@@ -10,7 +10,7 @@ import authMiddleware from "./authMiddleware.js";
 const port = 5000;
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow only your frontend origin
+    origin: ["http://localhost:5173", "https://rupeerise.netlify.app"], // Allow only your frontend origin
     credentials: true, // Allow cookies & authentication headers
   })
 );
