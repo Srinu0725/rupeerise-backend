@@ -7,7 +7,8 @@ import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 import authMiddleware from "./authMiddleware.js";
 
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const port = 5000;
 app.use(
