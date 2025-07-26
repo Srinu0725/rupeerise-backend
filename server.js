@@ -19,12 +19,10 @@ app.use(cookieParser());
 
 
 mongoose
-  .connect("mongodb://localhost:27017/test", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect("mongodb://localhost:27017/test")
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
+
 
 const usermodle = mongoose.model(
   "account",
