@@ -177,17 +177,40 @@ const Transaction = mongoose.model("Transaction", TransactionSchema);
 
 
 
+// app.post('/register', async (req, res) => {
+//   const { name, email, password } = req.body;
+
+//   try {
+//     // Check if email already exists
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       return res.status(400).json({ message: 'Email already registered' });
+//     }
+
+//     const newUser = new User({ name, email, password });
+//     await newUser.save();
+
+//     res.status(201).json({ message: 'User registered successfully' });
+//   } catch (err) {
+//     console.error('Error in /register:', err);
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// });
+
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already registered' });
     }
 
-    const newUser = new User({ name, email, password });
+    // Hash the password before saving
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
     res.status(201).json({ message: 'User registered successfully' });
@@ -196,6 +219,7 @@ app.post('/register', async (req, res) => {
     res.status(500).json({ message: 'Server Error' });
   }
 });
+
 
 
 
